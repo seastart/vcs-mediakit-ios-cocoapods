@@ -80,6 +80,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// 切换摄像头
 - (VCSError)switchCamera;
 
+#pragma mark 修正预览界面
+/// 修正预览界面
+/// @param size 视图大小
+- (VCSError)revisePreviewSize:(CGSize)size;
+
+#pragma mark 设置画面预览方向
+/// 设置画面预览方向
+/// @param deviceOrientation 预览方向
+- (VCSError)setPreviewOrientation:(UIDeviceOrientation)deviceOrientation;
+
 #pragma mark 设置摄像头的缩放倍数
 /// 设置摄像头的缩放倍数
 /// @param zoomRatio 缩放系数(1.0~5.0)
