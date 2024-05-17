@@ -17,6 +17,21 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - 渲染填充模式
+/**
+ 渲染填充模式
+
+ - VCSVideoRenderContentModeScaleAspectFill: 等比例短边充满
+ - VCSVideoRenderContentModeScaleToFill: 拉伸铺满
+ - VCSVideoRenderContentModeScaleAspectFit: 等比例长边充满
+*/
+typedef NS_ENUM(NSInteger, VCSVideoRenderContentMode) {
+    
+    VCSVideoRenderContentModeScaleAspectFill = 0,
+    VCSVideoRenderContentModeScaleToFill = 1,
+    VCSVideoRenderContentModeScaleAspectFit = 2,
+};
+
 #pragma mark - VCSVideoRender
 @interface VCSVideoRender : NSObject
 
@@ -29,6 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) BOOL moduleEnabled;
 /// 美颜功能启用状态
 @property (nonatomic, assign, readonly) BOOL beautyEnabled;
+/// 预览模块启用状态
+@property (nonatomic, assign, readonly) BOOL displayEnabled;
 
 /// 磨皮等级，取值范围 0.0-1.0，默认0.5
 @property (nonatomic, assign, readonly) float blurLevel;
@@ -97,6 +114,46 @@ NS_ASSUME_NONNULL_BEGIN
 /// 渲染视频数据
 /// @param pixelBuffer 原数据
 - (CVPixelBufferRef)renderWithInput:(CVPixelBufferRef)pixelBuffer;
+
+
+#pragma mark - ------------ 额外扩展方法 ------------
+
+#pragma mark 装载渲染本地预览
+/// 装载渲染本地预览
+/// @param superView 父类视图
+/// @param frame 预览布局
+- (void)installLocalDisplayViewReady:(UIView *)superView frame:(CGRect)frame;
+
+#pragma mark 开启预览
+/// 开启预览
+- (void)startPreview;
+
+#pragma mark 停止预览
+/// 停止预览
+- (void)stopPreview;
+
+#pragma mark 修改预览分辨率
+/// 修改预览分辨率
+/// @param sessionPreset 分辨率
+- (BOOL)changeSessionPreset:(AVCaptureSessionPreset)sessionPreset;
+
+#pragma mark 卸载渲染本地预览
+/// 卸载渲染本地预览
+- (void)uninstallLocalDisplay;
+
+#pragma mark 更新渲染填充模式
+/// 更新渲染填充模式
+/// @param contentMode 填充模式
+- (void)renewDisplayWithContentMode:(VCSVideoRenderContentMode)contentMode;
+
+#pragma mark 更新渲染组件布局
+/// 更新渲染组件布局
+/// @param frame Frame
+- (void)renewDisplayWithFrame:(CGRect)frame;
+
+#pragma mark 切换渲染摄像头
+/// 切换渲染摄像头
+- (void)changeCameraDevice;
 
 @end
 

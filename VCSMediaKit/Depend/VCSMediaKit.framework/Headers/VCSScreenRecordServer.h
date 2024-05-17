@@ -88,10 +88,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取单例
 + (VCSScreenRecordServer *)sharedInstance;
 
-#pragma mark 屏幕录制版本
-/// 屏幕录制版本
-- (NSString *)version;
-
 #pragma mark 开启屏幕录制
 /// 开启屏幕录制
 /// - Parameters:
@@ -99,7 +95,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///   - isCasting: 录屏模式 YES-投屏 NO-共享
 ///   - encoderWidth: 编码宽度
 ///   - encoderHeight: 编码高度
-///   - encoderHeight: 编码帧率
+///   - framerate: 编码帧率
 ///   - delegate: 代理回调
 - (void)startScreenRecordWithAppGroup:(NSString *)appGroup isCasting:(BOOL)isCasting encoderWidth:(int)encoderWidth encoderHeight:(int)encoderHeight framerate:(int)framerate delegate:(nullable id <VCSScreenRecordServerDelegate>)delegate;
 
