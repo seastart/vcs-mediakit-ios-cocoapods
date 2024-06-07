@@ -345,6 +345,14 @@ NS_ASSUME_NONNULL_BEGIN
 /// 视频包数
 @property (nonatomic, assign) int video;
 
+///  ------ 传输速率(码率-单位kps) ------
+/// 总速率
+@property (nonatomic, assign) float total_speed;
+/// 音频速率
+@property (nonatomic, assign) float audio_speed;
+/// 视频速率
+@property (nonatomic, assign) float video_speed;
+
 @end
 
 
