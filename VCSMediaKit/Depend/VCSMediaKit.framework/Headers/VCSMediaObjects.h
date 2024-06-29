@@ -312,6 +312,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 补偿后丢包率
 @property (nonatomic, assign) float loss_c;
 
+/// 网络等级
+@property (nonatomic, assign) int netLevel;
+
 @end
 
 
