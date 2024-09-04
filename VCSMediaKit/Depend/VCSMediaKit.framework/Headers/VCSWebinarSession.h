@@ -49,8 +49,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 音频路由变更回调
 /// @param session 研讨会实例
 /// @param route 音频路由
+/// @param routeName 音频路由名称
 /// @param previousRoute 变更前的音频路由
-- (void)webinarSession:(VCSWebinarSession *)session onAudioRouteChanged:(VCSAudioRoute)route previousRoute:(VCSAudioRoute)previousRoute;
+/// @param previousRouteName 变更前的音频路由名称
+- (void)webinarSession:(VCSWebinarSession *)session onAudioRouteChanged:(VCSAudioRoute)route routeName:(NSString *)routeName previousRoute:(VCSAudioRoute)previousRoute previousRouteName:(NSString *)previousRouteName;
 
 #pragma mark 设备性能使用情况回调
 /// 设备性能使用情况回调

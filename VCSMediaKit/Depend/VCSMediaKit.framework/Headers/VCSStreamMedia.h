@@ -119,8 +119,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 音频路由变更回调
 /// @param stream 流媒体组件实例
 /// @param route 音频路由
+/// @param routeName 音频路由名称
 /// @param previousRoute 变更前的音频路由
-- (void)streamMedia:(VCSStreamMedia *)stream onAudioRouteChanged:(VCSAudioRoute)route previousRoute:(VCSAudioRoute)previousRoute;
+/// @param previousRouteName 变更前的音频路由名称
+- (void)streamMedia:(VCSStreamMedia *)stream onAudioRouteChanged:(VCSAudioRoute)route routeName:(NSString *)routeName previousRoute:(VCSAudioRoute)previousRoute previousRouteName:(NSString *)previousRouteName;
 
 @end
 
@@ -151,8 +153,10 @@ typedef void (^VCSStreamMediaDestroyBlock)(void);
 /// 音频码流信息
 @property (nonatomic, strong, readonly) VCSStreamModel *streamAudio;
 
-/// 推流状态
-@property (nonatomic, assign, readonly) BOOL enabledPublish;
+/// 视频推流状态
+@property (nonatomic, assign, readonly) BOOL enabledPublishVideo;
+/// 音频推流状态
+@property (nonatomic, assign, readonly) BOOL enabledPublishAudio;
 /// 流媒体连接状态
 @property (nonatomic, assign, readonly) BOOL streamConnect;
 
@@ -214,6 +218,10 @@ typedef void (^VCSStreamMediaDestroyBlock)(void);
 #pragma mark 获取当前音频路由
 /// 获取当前音频路由
 - (VCSAudioRoute)currentAudioRoute;
+
+#pragma mark 获取音频路由列表
+/// 获取音频路由列表
+- (NSArray<VCSAudioRouteModel *> *)getAvailableAudioRoutes;
 
 #pragma mark 音频发送状态
 /// 音频发送状态

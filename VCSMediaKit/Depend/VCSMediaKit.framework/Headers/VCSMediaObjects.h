@@ -107,6 +107,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 视频码率，默认0.9*1024，单位kbps
 @property (nonatomic, assign) int bitrate;
 
+/// 默认音频路由，默认 VCSAudioRouteSpeaker
+@property (nonatomic, assign) VCSAudioRoute route;
+
 /// 是否启用媒体流加密 YES开启 NO关闭，默认 NO
 @property (nonatomic, assign) BOOL enableEncrypt;
 
@@ -454,6 +457,27 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) VCSAudioRoute route;
 /// 是否播放音频，默认 YES
 @property (nonatomic, assign) BOOL enablePlayAudio;
+
+@end
+
+
+#pragma mark - 音频路由对象
+/// 音频路由对象
+@interface VCSAudioRouteModel : NSObject
+
+/// 音频路由标识
+@property (nonatomic, copy, nullable) NSString *identifier;
+/// 音频路由
+@property (nonatomic, assign) VCSAudioRoute route;
+/// 音频路由名称
+@property (nonatomic, copy, nullable) NSString *routeName;
+
+/// 初始化音频路由对象
+/// - Parameters:
+///   - identifier: 音频路由标识
+///   - route: 音频路由类型
+///   - routeName: 音频路由名称
+- (instancetype)initWithIdentifier:(nullable NSString *)identifier route:(VCSAudioRoute)route routeName:(nullable NSString *)routeName;
 
 @end
 
